@@ -14,6 +14,13 @@
     "categories": {
       "auth": {
         "elearn59eba3fc": {}
+      },
+      "function": {
+        "elearn59eba3fcPostConfirmation": {
+          "GROUP": "student",
+          "deploymentBucketName": "amplify-elearn-dev-225918-deployment",
+          "s3Key": "amplify-builds/elearn59eba3fcPostConfirmation-56753566734132646a6f-build.zip"
+        }
       }
     }
   }
