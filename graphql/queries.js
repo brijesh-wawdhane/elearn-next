@@ -8,6 +8,7 @@ export const getPost = /* GraphQL */ `
       title
       content
       videoUrl
+      username
       createdAt
       updatedAt
     }
@@ -25,6 +26,35 @@ export const listPosts = /* GraphQL */ `
         title
         content
         videoUrl
+        username
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const postsByUsername = /* GraphQL */ `
+  query PostsByUsername(
+    $username: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    postsByUsername(
+      username: $username
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        content
+        videoUrl
+        username
         createdAt
         updatedAt
       }
