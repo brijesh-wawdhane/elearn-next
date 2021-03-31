@@ -7,17 +7,17 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { createPost } from "../graphql/mutations";
 
-const initialState = { title: "", content: "" };
+const initialState = { videoUrl: "", title: "", content: "" };
 
 function CreatePost() {
   const [post, setPost] = useState(initialState);
-  const { title, content } = post;
+  const { title, videoUrl, content } = post;
   const router = useRouter();
   function onChange(e) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
   async function createNewPost() {
-    if (!title || !content) return;
+    if (!videoUrl || !title || !content) return;
     const id = uuid();
     post.id = id;
 
@@ -42,7 +42,7 @@ function CreatePost() {
       />
       <input
         onChange={onChange}
-        name="Video"
+        name="videoUrl"
         placeholder="Video URL"
         value={post.videoUrl}
         className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"

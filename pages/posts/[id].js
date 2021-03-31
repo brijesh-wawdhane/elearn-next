@@ -1,6 +1,7 @@
 import { API } from "aws-amplify";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
+import ReactPlayer from "react-player";
 import "../../configureAmplify";
 import { listPosts, getPost } from "../../graphql/queries";
 
@@ -16,7 +17,7 @@ export default function Post({ post }) {
       </h1>
       <p className="text-sm font-light my-4">by {post.username}</p>
       <div className="mt-8">
-        <h3>{post.videoUrl}</h3>
+        <ReactPlayer url={post.videoUrl} />
         <ReactMarkdown className="prose" children={post.content} />
       </div>
     </div>
