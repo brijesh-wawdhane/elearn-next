@@ -16,5 +16,13 @@
         }
       }
     }
+  },
+  "auth": {
+    "elearn59eba3fc": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
   }
 }
