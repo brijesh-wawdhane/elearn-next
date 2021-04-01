@@ -1,11 +1,12 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { createPost } from "../graphql/mutations";
+import { Auth } from "aws-amplify";
 
 const initialState = { videoUrl: "", title: "", content: "" };
 
@@ -28,6 +29,29 @@ function CreatePost() {
     });
     router.push(`/posts/${id}`);
   }
+  var seen = [];
+  let authdata = JSON.stringify(Auth, function (key, val) {
+    if (val != null && typeof val == "object") {
+      if (seen.indexOf(val) >= 0) {
+        return;
+      }
+      seen.push(val);
+    }
+    return val;
+  });
+  let stringifiedauthdata = JSON.stringify(authdata);
+
+  var status = new RegExp("student").test(stringifiedauthdata);
+  console.log(status);
+
+  if (status) {
+    return (
+      <h1 className="text-3xl text-red-600 font-semibold tracking-wide mt-6">
+        You are not authorized
+      </h1>
+    );
+  }
+
   return (
     <div>
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
