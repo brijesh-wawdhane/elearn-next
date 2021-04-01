@@ -47,5 +47,9 @@ export async function getStaticProps({ params }) {
     props: {
       post: postData.data.getPost,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // adds Incremental Static Generation, sets time in seconds
   };
 }
