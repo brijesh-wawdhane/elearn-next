@@ -1,0 +1,26 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "elearn59eba3fc",
+  "functionName": "elearn59eba3fcCustomMessage",
+  "resourceName": "elearn59eba3fcCustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
+  "triggerDir": "/Users/brijeshwawdhane/.nvm/versions/node/v14.15.5/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "triggerEventPath": "CustomMessage.event.json",
+  "roleName": "elearn59eba3fcCustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "http://localhost:3000",
+  "EMAILSUBJECT": "Confirm your email",
+  "EMAILMESSAGE": "Your account verifcation is almost complete, click on the link below to confirm this email id",
+  "RESOURCENAME": "resourceName",
+  "enableCors": false
+}

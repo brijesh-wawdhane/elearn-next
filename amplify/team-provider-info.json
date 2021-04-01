@@ -20,6 +20,13 @@
           "GROUP": "student",
           "deploymentBucketName": "amplify-elearn-dev-225918-deployment",
           "s3Key": "amplify-builds/elearn59eba3fcPostConfirmation-56753566734132646a6f-build.zip"
+        },
+        "elearn59eba3fcCustomMessage": {
+          "REDIRECTURL": "http://localhost:3000",
+          "EMAILSUBJECT": "Confirm your email",
+          "EMAILMESSAGE": "Your account verifcation is almost complete, click on the link below to confirm this email id",
+          "deploymentBucketName": "amplify-elearn-dev-225918-deployment",
+          "s3Key": "amplify-builds/elearn59eba3fcCustomMessage-44396131735a6f704f66-build.zip"
         }
       }
     }

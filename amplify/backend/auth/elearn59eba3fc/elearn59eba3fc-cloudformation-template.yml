@@ -21,6 +21,16 @@ Parameters:
   
   
   
+  functionelearn59eba3fcCustomMessageArn:
+    Type: String
+    Default: functionelearn59eba3fcCustomMessageArn
+  
+  functionelearn59eba3fcCustomMessageName:
+    Type: String
+    Default: functionelearn59eba3fcCustomMessageName
+  
+  
+  
 
     
   identityPoolName:
@@ -174,6 +184,10 @@ Parameters:
     Type: CommaDelimitedList
       
             
+  verificationBucketName:
+    Type: String
+  
+            
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
   
@@ -181,6 +195,27 @@ Conditions:
   
 
 Resources:
+  
+  CustomMessageConfirmationBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: "Retain"
+    Properties:
+      BucketName:  !If [ShouldNotCreateEnvResources, !Ref verificationBucketName, !Join ['',[!Ref verificationBucketName, '-', !Ref env]]]
+      AccessControl: "Private"
+      WebsiteConfiguration:
+        IndexDocument: "index.html"
+        ErrorDocument: "index.html"
+      CorsConfiguration:
+        CorsRules:
+          -
+            AllowedHeaders:
+              - "Authorization"
+              - "Content-Length"
+            AllowedMethods:
+              - "GET"
+            AllowedOrigins:
+              - "*"
+            MaxAge: 3000
   
   
   # BEGIN SNS ROLE RESOURCE
@@ -237,6 +272,8 @@ Resources:
       LambdaConfig:
         
         
+          CustomMessage: !Ref functionelearn59eba3fcCustomMessageArn
+        
         
         
         
@@ -271,6 +308,15 @@ Resources:
     
   
   
+  
+  UserPoolCustomMessageLambdaInvokePermission:
+    Type: "AWS::Lambda::Permission"
+    DependsOn: UserPool
+    Properties:
+      Action: "lambda:invokeFunction"
+      Principal: "cognito-idp.amazonaws.com"
+      FunctionName: !Ref functionelearn59eba3fcCustomMessageName
+      SourceArn: !GetAtt UserPool.Arn
   
   
   
