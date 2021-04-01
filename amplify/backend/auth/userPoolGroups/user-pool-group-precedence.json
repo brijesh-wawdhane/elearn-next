@@ -1,6 +1,6 @@
 [
-  {
-    "groupName": "student",
-    "precedence": 1
-  }
+    {
+        "groupName": "student",
+        "precedence": 1
+    }
 ]
