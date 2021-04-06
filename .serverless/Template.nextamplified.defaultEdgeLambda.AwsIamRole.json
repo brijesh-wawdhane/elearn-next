@@ -2,8 +2,8 @@
   "name": "99c4bjn-8ora1g1",
   "arn": "arn:aws:iam::911756034838:role/99c4bjn-8ora1g1",
   "service": [
-    "lambda.amazonaws.com",
-    "edgelambda.amazonaws.com"
+    "edgelambda.amazonaws.com",
+    "lambda.amazonaws.com"
   ],
   "policy": {
     "Version": "2012-10-17",
