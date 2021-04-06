@@ -63,6 +63,9 @@ function EditPost() {
       >
         Update Post
       </button>
+      <button className="m-8 bg-green-500 text-white font-semibold px-8 py-2 rounded-lg">
+        Create test
+      </button>
     </div>
   );
 }
