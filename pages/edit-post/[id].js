@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { API } from "aws-amplify";
 import { useRouter } from "next/router";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { updatePost } from "../../graphql/mutations";
 import { getPost } from "../../graphql/queries";
-import Head from "next/head";
-import axios from "axios";
 
 function EditPost() {
   const [post, setPost] = useState(null);
@@ -36,24 +34,6 @@ function EditPost() {
     console.log("post successfully updated!");
     router.push("/my-posts");
   }
-
-  state = {
-    token: [],
-  };
-
-  const api = axios.create({
-    baseURL: `https://api.typeform.com/`,
-  });
-
-  getToken = async () => {
-    let data = await api
-      .get("/oauth/authorize", {
-        client_id: "3G7z6PvD6g44Phd5wAJfkcVdbL9deG8AQbiXhkyCDpAY",
-        redirect_uri: "https://dye9ikgpsq2ey.cloudfront.net/",
-      })
-      .then(({ data }) => data);
-    this.setState({ courses: data });
-  };
 
   return (
     <div>
