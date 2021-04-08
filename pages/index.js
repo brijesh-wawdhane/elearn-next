@@ -5,17 +5,9 @@ import { listPosts } from "../graphql/queries";
 import fetch from "isomorphic-unfetch";
 
 export default function Home() {
-  async function getInitialProps() {
-    const res = await fetch(
-      "https://api.typeform.com/oauth/authorize?state=xyz789&client_id=3G7z6PvD6g44Phd5wAJfkcVdbL9deG8AQbiXhkyCDpAY&redirect_uri=https://google.com"
-    );
-    const token = await res.json();
-    return { token };
-  }
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetchPosts();
-    getInitialProps();
   }, []);
   async function fetchPosts() {
     const postData = await API.graphql({
